@@ -1,0 +1,54 @@
+To demo this project a video is probably the way to go.   Any fans know I'm into programming assembly on c64 in a big way.   I've also made it a goal to
+get more comfortable with python so why not join the two?
+
+It started with a demo I was working on where I built a sprite engine and then needed co ordinate data to put in it.   Why not use python?
+
+I used a simple algorithm that gradually speeds up or slows down the individual letter sprites and then eventually gave it an x and y speed.
+
+I used lists in python and to feed the data into the assembly program, I formatted it as if I had typed it myself
+byte x,x,x,x,x
+
+outputted it and copied and pasted it.
+
+And it worked!
+
+BUT.... I thought, if I could generate gobs of sprite co ordinate data (control x + x highbit and y of 8 sprites), maybe I could use it to plot points
+on a bitmap as well.
+
+So... I coded up a bitmap plotter in assembly that takes an x co ordinate and a y co ordinate and lights up a single pixel on a 320x200 (high res) c64 screen.
+This also worked, although, it was limited to the first 255 bytes of 320 because I hadn't built in the high bit yet.   I was getting tired of copying and pasting
+byte code from python to the c64 studio so I did a bit of work to save the co ordinates as a data file that c64 assembly could read.   This also worked! (after some experimentation)
+
+Then I took it for a spin, and with 2 bytes per pixel, complex pictures would take up more space in plotting co ordinates than the bitmap itself (which I also had
+to keep free)   I hadn't added the x co ordinate high bit yet so that would have increased the size by half again.   As well, I was getting the c64 to do 
+my plotting which meant a lot of addition and multiplication for the 8502.   BUT WHAT IF.... what if I did my plotting in python, and also in python, converted that plot to a bitmap file format the c64 could read.   
+
+Well, after a couple of tries, I did get the line plotter to work.   straight lines were easy, even diaganols were easy, uneven lines were the trick.   How did I solve those?  I reduced the long axis to the nearest even ratio, and then, "stretched" the line by x (remainder) pixels by spreading out "extra" pixels throughout the length of the line.   To my surprise, this worked fabulously.
+
+With a line plotter in tow, I was able to create simple shapes of various sizes.  My ultimate goal though, was some kind of transformational motion.  Like...rotation!   I used my line plotter to divide up two screens of bitmap into 8 frames each, and played with rotating shapes.
+
+I eventually did with some research achieve mathematical rotations and was able to animate 16 directional rotations into a full circle.  
+
+Organizing the 16 tiny screens into various degrees of rotation, I animated them together with assembly to demo:
+1) the line plotter
+2) the bitmap saver
+3) the rotater
+4) the animator 
+
+Now this was mission creep, I completed the bitmap line plotter and kept going before making something really good with it, BUT I believe now that it's a 
+rudimentary draw program with animation capabilities, I might go ahead and try to make something REALLY neat with it!  Stay tuned in the demo area probably to see more results and thanks for watching my presentation!
+
+
+
+generic demo
+generic python shot
+byte x,x,x,x 
+sprite motion 
+first plotter shot
+large bytecode shot
+first plotter complex shot
+bitmapper straight lines, diagonals, then an x across the whole screen
+show squares
+show triangles
+show 8 frame animation
+ 
